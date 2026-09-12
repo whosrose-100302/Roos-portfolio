@@ -1,0 +1,177 @@
+\documentclass[10pt, a4paper, titlepage]{article}
+% tells latex what class the document is in, along with point type size
+% and whether a titlepage is included
+\usepackage{graphicx, latexsym}
+\usepackage{caption} % these help with captions and subcaptions
+\usepackage{subcaption}
+\usepackage{float} % helps organizing your figures on the page
+\usepackage{setspace} 
+\usepackage{apalike}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{bm}
+\usepackage{epstopdf}
+\usepackage[]{hyperref}
+\hypersetup{
+    pdftitle={exercise 1.6.2 (second version)},
+    pdfauthor={Roos Mulder},
+    pdfsubject={second version},
+    pdfkeywords={new, second},
+    bookmarksnumbered=true,     
+    bookmarksopen=true,         
+    bookmarksopenlevel=1,       
+    colorlinks=true,            
+    pdfstartview=Fit,           
+    pdfpagemode=UseOutlines,      
+    pdfpagelayout=TwoPageRight
+}
+
+\singlespacing
+%\onehalfspacing
+%\doublespacing
+
+
+
+\title{Exercise 1.6\\ \small second version}
+\author{Roos Mulder}
+\date{\today}
+%\date{}
+
+\begin{document}
+\maketitle
+\newpage
+
+\section*{An equation}
+I chose the equation for a normal distribution. We can say 'X is normally distributed' 
+% the \[ and \] put the equation on its own line and centers it in the middle
+% of the page
+\[
+X \sim N(\mu, \sigma^2)
+\]
+The density function of a normal distribution is as follows:
+% frac{top}{bottom} creates a fraction, so in this case 1/sqrt(2*pi*sigma^2)
+% the \sigma gives you the Greek letter sigma, same for mu and pi
+% then, we exponentiate
+\[
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}
+       \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+\]
+
+
+\section*{A section}
+This is a section
+
+\subsection*{A subsection}
+This is a subsection
+
+\section*{Figures and tables}
+% begin a figure section, the H tells latex to put it "Here"
+% (not at the bottom of the page, or wherever it can find space)
+\begin{figure}[H]
+% make sure the figures are at the center of the page, not starting 
+% flush left
+\centering
+  % one of the subfigures, 46% of the text width, so two images
+  % side by side would fill 92% of the width
+  \begin{subfigure}{0.46\textwidth}
+  % also center within the subfigure
+  \centering
+  % add the histogram, with a width of 0.46 of the textwidth (specified earlier)
+  % just add the name of the figure, because it's in the same folder
+  % as this .tex file
+  \includegraphics[width=\textwidth]{figure1.png}
+  % add the caption to the histogram
+  \caption{Histogram} % the (a) is added automatically
+  % not needed now, but we can give this figure an internal label, so we
+  % can refer to it in text
+  \label{fig:histogram}
+  % this histogram is now finished, so we end this subfigure
+  \end{subfigure}\hfill % now, we want to start the top right subfigure, 
+  % next to the histogram we put as much horizontal space as possible here with 
+  % \hfill 
+  % the density plot
+  \begin{subfigure}{0.46\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{figure2.png}
+  \caption{Densityplot} % the (b) is added automatically 
+  \end{subfigure}
+  % now, we want to go down, and to the left for the bottom left image
+  % so, we add vertical space to move down
+  % \par first tells it to move down a line/row
+  \par\vspace{0.5cm}
+  
+  % the strip plot (bottom left)
+  \begin{subfigure}{0.46\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{figure3.png}
+  \caption{Stripplot} % the (c) is added automatically
+  \end{subfigure}\hfill % we put as much horizontal space as possible here
+  % the bottom right boxplot
+  \begin{subfigure}{0.46\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{figure4.png}
+  \caption{Boxplot}
+  \end{subfigure}
+  
+  % we want a caption for the entire figure, LaTeX add "Figure 1"
+  % and Table 1 automatically
+  \caption{Different plots of the same data, sometimes transformed. 
+  No particular objective other than it being an exercise.}
+
+% end the figure section
+\end{figure}
+
+% now, we want the table of the data, only the first 9 rows
+% i used r to give me this code
+% first, i chopped off the first nine rows, then used this command:
+% print(xtable(data.table)), which gave me this code:
+\begin{table}[ht]
+\centering
+% i added this line myself: the title of the table
+\caption{The same data, but now in a table. Only the first nine rows 
+are displayed.}
+\begin{tabular}{rrrrr}
+  \hline
+ & data & squared1 & squared2 & exponent \\ 
+  \hline
+1 & -0.56 & 0.31 & 0.31 & 0.57 \\ 
+  2 & -0.23 & 0.05 & 0.05 & 0.79 \\ 
+  3 & 1.56 & 2.43 & 2.43 & 4.75 \\ 
+  4 & 0.07 & 0.00 & 0.00 & 1.07 \\ 
+  5 & 0.13 & 0.02 & 0.02 & 1.14 \\ 
+  6 & 1.72 & 2.94 & 2.94 & 5.56 \\ 
+  7 & 0.46 & 0.21 & 0.21 & 1.59 \\ 
+  8 & -1.27 & 1.60 & 1.60 & 0.28 \\ 
+  9 & -0.69 & 0.47 & 0.47 & 0.50 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\section*{The AI-generated fairytale}
+
+The Enchanted Garden and the Magical Dove
+
+Once, in a land covered by mists and whispers, there lay an enchanting garden hidden behind a great stone wall. No one knew who had built the wall or why, but one thing was for certain – nobody had ever seen what was behind it.
+
+A little boy named Peter lived in a village nearby. Fuelled by curiosity and tales of magical creatures, he often dreamt of the wonders that the walled garden might hold. One day, unable to resist its lure any longer, he decided to find a way in.
+
+As he approached the towering stone barrier, he noticed a tiny gap just big enough for him to peek through. The garden inside was bathed in a shimmering golden light, unlike any he had ever seen. To his amazement, in the center stood a magnificent tree with leaves that glittered as if they were made of starlight. And resting on one of its branches was a dove, glowing with the same luminous hue.
+
+Before he could process this beautiful sight, the dove spoke to his in a voice as soft as the wind, "To enter the garden, one must share a pure and selfless desire."
+
+Peter, with his heart pounding, whispered his wish, "I wish for everyone in my village to be happy and free from suffering."
+
+The massive stone door, seemingly of its own accord, began to open. The luminous dove flew to Peter and rested on his shoulder. "Your wish is genuine, and so you may enter," it said.
+
+Inside, the garden was more wondrous than Peter had ever imagined. Flowers sang in soft harmonies, and a gentle breeze carried the sweetest of fragrances. Every step he took made the grass shimmer with colors she'd never seen before.
+
+The dove explained that this was an Enchanted Garden, a place where one’s purest wishes could come true. But, there was a catch. To make his wish a reality, Peter had to plant a seed from the magical tree in his village and care for it with unwavering love and dedication.
+
+Peter accepted the challenge. With the seed safely tucked in his pocket and the dove guiding her, he returned to his village.
+
+Years went by, and with Peter's love, the seed grew into a magnificent tree, similar to the one in the Enchanted Garden. With its growth, joy and happiness blossomed in the village like never before.
+
+And so, in a village once shadowed by mystery, there stood a tree that bore witness to the pure heart of a boy and his luminous companion, reminding everyone that magic was always just a wish away.
+
+\end{document}
+
+

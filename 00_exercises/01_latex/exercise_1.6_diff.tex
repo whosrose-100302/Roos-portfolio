@@ -1,0 +1,260 @@
+\documentclass[10pt, a4paper, titlepage]{article}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL exercise_1.6.1.tex   Fri Sep 11 12:27:07 2026
+%DIF ADD exercise_1.6.2.tex   Fri Sep 11 12:31:02 2026
+% tells latex what class the document is in, along with point type size
+% and whether a titlepage is included
+\usepackage{graphicx, latexsym}
+\usepackage{caption} % these help with captions and subcaptions
+\usepackage{subcaption}
+\usepackage{float} % helps organizing your figures on the page
+\usepackage{setspace} 
+\usepackage{apalike}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{bm}
+\usepackage{epstopdf}
+\usepackage[]{hyperref}
+\hypersetup{
+%DIF 15c15
+%DIF <     pdftitle={exercise 1.6.1 (first version)},
+%DIF -------
+    pdftitle={exercise 1.6.2 (second version)}, %DIF > 
+%DIF -------
+    pdfauthor={Roos Mulder},
+%DIF 17-18c17-18
+%DIF <     pdfsubject={first version},
+%DIF <     pdfkeywords={old, first},
+%DIF -------
+    pdfsubject={second version}, %DIF > 
+    pdfkeywords={new, second}, %DIF > 
+%DIF -------
+    bookmarksnumbered=true,     
+    bookmarksopen=true,         
+    bookmarksopenlevel=1,       
+    colorlinks=true,            
+    pdfstartview=Fit,           
+    pdfpagemode=UseOutlines,      
+    pdfpagelayout=TwoPageRight
+}
+
+\singlespacing
+%\onehalfspacing
+%\doublespacing
+%DIF 31a31
+ %DIF > 
+%DIF -------
+
+
+\title{Exercise 1.6\\ \small \DIFdelbegin \DIFdel{first }\DIFdelend \DIFaddbegin \DIFadd{second }\DIFaddend version}
+\author{Roos Mulder}
+\date{\today}
+%\date{}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}} %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+\providecommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\providecommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\providecommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+\begin{document}
+\maketitle
+\newpage
+
+\section*{An equation}
+I chose the equation for a normal distribution. We can say 'X is normally distributed' 
+% the \[ and \] put the equation on its own line and centers it in the middle
+% of the page
+\[
+X \sim N(\mu, \sigma^2)
+\]
+The density function of a normal distribution is as follows:
+% frac{top}{bottom} creates a fraction, so in this case 1/sqrt(2*pi*sigma^2)
+% the \sigma gives you the Greek letter sigma, same for mu and pi
+% then, we exponentiate
+\[
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}
+       \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+\]
+
+
+\section*{A section}
+This is a section
+
+\subsection*{A subsection}
+This is a subsection
+
+\section*{Figures and tables}
+% begin a figure section, the H tells latex to put it "Here"
+% (not at the bottom of the page, or wherever it can find space)
+\begin{figure}[H]
+% make sure the figures are at the center of the page, not starting 
+% flush left
+\centering
+  % one of the subfigures, 46% of the text width, so two images
+  % side by side would fill 92% of the width
+  \begin{subfigure}{0.46\textwidth}
+  % also center within the subfigure
+  \centering
+  % add the histogram, with a width of 0.46 of the textwidth (specified earlier)
+  % just add the name of the figure, because it's in the same folder
+  % as this .tex file
+  \includegraphics[width=\textwidth]{figure1.png}
+  % add the caption to the histogram
+  \caption{Histogram} % the (a) is added automatically
+  % not needed now, but we can give this figure an internal label, so we
+  % can refer to it in text
+  \label{fig:histogram}
+  % this histogram is now finished, so we end this subfigure
+  \end{subfigure}\hfill % now, we want to start the top right subfigure, 
+  % next to the histogram we put as much horizontal space as possible here with 
+  % \hfill 
+  % the density plot
+  \begin{subfigure}{0.46\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{figure2.png}
+  \caption{Densityplot} % the (b) is added automatically 
+  \end{subfigure}
+  % now, we want to go down, and to the left for the bottom left image
+  % so, we add vertical space to move down
+  % \par first tells it to move down a line/row
+  \par\vspace{0.5cm}
+
+  % the strip plot (bottom left)
+  \begin{subfigure}{0.46\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{figure3.png}
+  \caption{Stripplot} % the (c) is added automatically
+  \end{subfigure}\hfill % we put as much horizontal space as possible here
+  % the bottom right boxplot
+  \begin{subfigure}{0.46\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{figure4.png}
+  \caption{Boxplot}
+  \end{subfigure}
+
+  % we want a caption for the entire figure, LaTeX add "Figure 1"
+  % and Table 1 automatically
+  \caption{Different plots of the same data, sometimes transformed. 
+  No particular objective other than it being an exercise.}
+
+% end the figure section
+\end{figure}
+
+% now, we want the table of the data, only the first 9 rows
+% i used r to give me this code
+% first, i chopped off the first nine rows, then used this command:
+% print(xtable(data.table)), which gave me this code:
+\begin{table}[ht]
+\centering
+% i added this line myself: the title of the table
+\caption{The same data, but now in a table. Only the first nine rows 
+are displayed.}
+\begin{tabular}{rrrrr}
+  \hline
+ & data & squared1 & squared2 & exponent \\ 
+  \hline
+1 & -0.56 & 0.31 & 0.31 & 0.57 \\ 
+  2 & -0.23 & 0.05 & 0.05 & 0.79 \\ 
+  3 & 1.56 & 2.43 & 2.43 & 4.75 \\ 
+  4 & 0.07 & 0.00 & 0.00 & 1.07 \\ 
+  5 & 0.13 & 0.02 & 0.02 & 1.14 \\ 
+  6 & 1.72 & 2.94 & 2.94 & 5.56 \\ 
+  7 & 0.46 & 0.21 & 0.21 & 1.59 \\ 
+  8 & -1.27 & 1.60 & 1.60 & 0.28 \\ 
+  9 & -0.69 & 0.47 & 0.47 & 0.50 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\section*{The AI-generated fairytale}
+
+The Enchanted Garden and the \DIFdelbegin \DIFdel{Luminous }\DIFdelend \DIFaddbegin \DIFadd{Magical }\DIFaddend Dove
+
+Once, in a land covered by mists and whispers, there lay an enchanting garden hidden behind a great stone wall. No one knew who had built the wall or why, but one thing was for certain – nobody had ever seen what was behind it.
+
+A little \DIFdelbegin \DIFdel{girl named Clara }\DIFdelend \DIFaddbegin \DIFadd{boy named Peter }\DIFaddend lived in a village nearby. Fuel\DIFaddbegin \DIFadd{l}\DIFaddend ed by curiosity and tales of magical creatures, \DIFdelbegin \DIFdel{s}\DIFdelend he often dreamt of the wonders that the walled garden might hold. One day, unable to resist its lure any longer, \DIFdelbegin \DIFdel{s}\DIFdelend he decided to find a way in.
+
+As \DIFdelbegin \DIFdel{s}\DIFdelend he approached the towering stone barrier, \DIFdelbegin \DIFdel{s}\DIFdelend he noticed a tiny gap just big enough for \DIFdelbegin \DIFdel{her }\DIFdelend \DIFaddbegin \DIFadd{him }\DIFaddend to peek through. The garden inside was bathed in a shimmering golden light, unlike any \DIFdelbegin \DIFdel{s}\DIFdelend he had ever seen. To \DIFdelbegin \DIFdel{her }\DIFdelend \DIFaddbegin \DIFadd{his }\DIFaddend amazement, in the center stood a magnificent tree with leaves that glittered as if they were made of starlight. And resting on one of its branches was a dove, glowing with the same luminous hue.
+
+Before \DIFdelbegin \DIFdel{s}\DIFdelend he could process this beautiful sight, the dove spoke to \DIFdelbegin \DIFdel{her }\DIFdelend \DIFaddbegin \DIFadd{his }\DIFaddend in a voice as soft as the wind, "To enter the garden, one must share a pure and selfless desire."
+
+\DIFdelbegin \DIFdel{Clara, with her }\DIFdelend \DIFaddbegin \DIFadd{Peter, with his }\DIFaddend heart pounding, whispered \DIFdelbegin \DIFdel{her }\DIFdelend \DIFaddbegin \DIFadd{his }\DIFaddend wish, "I wish for everyone in my village to be happy and free from suffering."
+
+The massive stone door, seemingly of its own accord, began to open. The luminous dove flew to \DIFdelbegin \DIFdel{Clara }\DIFdelend \DIFaddbegin \DIFadd{Peter }\DIFaddend and rested on \DIFdelbegin \DIFdel{her }\DIFdelend \DIFaddbegin \DIFadd{his }\DIFaddend shoulder. "Your wish is genuine, and so you may enter," it said.
+
+Inside, the garden was more wondrous than \DIFdelbegin \DIFdel{Clara }\DIFdelend \DIFaddbegin \DIFadd{Peter }\DIFaddend had ever imagined. Flowers sang in soft harmonies, and a gentle breeze carried the sweetest of fragrances. Every step \DIFdelbegin \DIFdel{s}\DIFdelend he took made the grass shimmer with colors she'd never seen before.
+
+The dove explained that this was an Enchanted Garden, a place where one’s purest wishes could come true. But, there was a catch. To make \DIFdelbegin \DIFdel{her }\DIFdelend \DIFaddbegin \DIFadd{his }\DIFaddend wish a reality, \DIFdelbegin \DIFdel{Clara }\DIFdelend \DIFaddbegin \DIFadd{Peter }\DIFaddend had to plant a seed from the magical tree in \DIFdelbegin \DIFdel{her }\DIFdelend \DIFaddbegin \DIFadd{his }\DIFaddend village and care for it with unwavering love and dedication.
+
+\DIFdelbegin \DIFdel{Clara }\DIFdelend \DIFaddbegin \DIFadd{Peter }\DIFaddend accepted the challenge. With the seed safely tucked in \DIFdelbegin \DIFdel{her }\DIFdelend \DIFaddbegin \DIFadd{his }\DIFaddend pocket and the dove guiding her, \DIFdelbegin \DIFdel{she returned to her }\DIFdelend \DIFaddbegin \DIFadd{he returned to his }\DIFaddend village.
+
+Years went by, and with \DIFdelbegin \DIFdel{Clara}\DIFdelend \DIFaddbegin \DIFadd{Peter}\DIFaddend 's love, the seed grew into a magnificent tree, similar to the one in the Enchanted Garden. With its growth, joy and happiness blossomed in the village like never before.
+
+\DIFdelbegin \DIFdel{Clara's selfless wish not only transformed her village but also changed her. She became known as the Keeper of Joy, teaching future generations about love, compassion, and the magic of selfless wishes.
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend And so, in a village once shadowed by mystery, there stood a tree that bore witness to the pure heart of a \DIFdelbegin \DIFdel{girl and her }\DIFdelend \DIFaddbegin \DIFadd{boy and his }\DIFaddend luminous companion, reminding everyone that magic was always just a wish away.
+
+\end{document}
+
+
