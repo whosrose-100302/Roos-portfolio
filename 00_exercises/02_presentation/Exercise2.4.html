@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="Exercise2.4_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Exercise2.4_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Exercise2.4_files/libs/quarto-html/popper.min.js"></script>
+<script src="Exercise2.4_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Exercise2.4_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Exercise2.4_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Exercise2.4_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <meta name="author" content="Roos Mulder">
+  <title>Exercise2.4</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Exercise2.4_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Exercise2.4_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="Exercise2.4_files/libs/revealjs/dist/theme/quarto-832775eafbd512325564c8c290c39367.css">
+  <link href="Exercise2.4_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Exercise2.4_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Exercise2.4_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Exercise2.4_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="Exercise2.4_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+  <link href="Exercise2.4_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+
+  <script src="Exercise2.4_files/libs/datatables-binding-0.34.0/datatables.js"></script>
+
+  <script src="Exercise2.4_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+  <link href="Exercise2.4_files/libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
+  <link href="Exercise2.4_files/libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+
+  <script src="Exercise2.4_files/libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+
+  <link href="Exercise2.4_files/libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+
+  <script src="Exercise2.4_files/libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+  <link href="Exercise2.4_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+  <script src="Exercise2.4_files/libs/plotly-binding-4.11.0/plotly.js"></script>
+
+  <script src="Exercise2.4_files/libs/typedarray-0.1/typedarray.min.js"></script>
+
+  <link href="Exercise2.4_files/libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+  <script src="Exercise2.4_files/libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Exercise2.4</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Roos Mulder <a href="https://orcid.org/0009-0009-2386-362X" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+</div>
+</div>
+</div>
+
+</section>
+<section id="the-iris-dataset" class="slide level2">
+<h2>The Iris dataset</h2>
+<p>This data was made infamous by <span class="citation" data-cites="fisherUSEMULTIPLEMEASUREMENTS1936">Fisher (<a href="#/citationreference-list" role="doc-biblioref" onclick="">1936</a>)</span>. <br></p>
+
+<img data-src="iris2.jpg" class="quarto-figure quarto-figure-center r-stretch" width="300"></section>
+<section id="the-data" class="slide level2">
+<h2>The data</h2>
+<div class="cell">
+<div id="tbl-one" class="cell quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-one-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Summary of some of the iris data
+</figcaption>
+<div aria-describedby="tbl-one-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="htmlwidget-6ee543866280e17df9cf" style="width:500px;height:300px;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6ee543866280e17df9cf">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["setosa","versicolor","virginica"],[1.462,4.26,5.552],[0.1736639964801841,0.4699109772399579,0.5518946956639834]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Species<\/th>\n      <th>Petal.Length_M<\/th>\n      <th>Petal.Length_SD<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":3,"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Species","targets":1},{"name":"Petal.Length_M","targets":2},{"name":"Petal.Length_SD","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[3,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="length-and-width" class="slide level2">
+<h2>Length and width</h2>
+<p>Let’s see the relation between petal length and width for the three species</p>
+<div class="cell">
+<div id="fig-one" class="cell-output-display quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-one-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-d90b543d695da04f1fc3" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-d90b543d695da04f1fc3">{"x":{"data":[{"x":[0.20000000000000001,0.20000000000000001,0.20000000000000001,0.20000000000000001,0.20000000000000001,0.40000000000000002,0.29999999999999999,0.20000000000000001,0.20000000000000001,0.10000000000000001,0.20000000000000001,0.20000000000000001,0.10000000000000001,0.10000000000000001,0.20000000000000001,0.40000000000000002,0.40000000000000002,0.29999999999999999,0.29999999999999999,0.29999999999999999,0.20000000000000001,0.40000000000000002,0.20000000000000001,0.5,0.20000000000000001,0.20000000000000001,0.40000000000000002,0.20000000000000001,0.20000000000000001,0.20000000000000001,0.20000000000000001,0.40000000000000002,0.10000000000000001,0.20000000000000001,0.20000000000000001,0.20000000000000001,0.20000000000000001,0.10000000000000001,0.20000000000000001,0.20000000000000001,0.29999999999999999,0.29999999999999999,0.20000000000000001,0.59999999999999998,0.40000000000000002,0.29999999999999999,0.20000000000000001,0.20000000000000001,0.20000000000000001,0.20000000000000001],"y":[1.3999999999999999,1.3999999999999999,1.3,1.5,1.3999999999999999,1.7,1.3999999999999999,1.5,1.3999999999999999,1.5,1.5,1.6000000000000001,1.3999999999999999,1.1000000000000001,1.2,1.5,1.3,1.3999999999999999,1.7,1.5,1.7,1.5,1,1.7,1.8999999999999999,1.6000000000000001,1.6000000000000001,1.5,1.3999999999999999,1.6000000000000001,1.6000000000000001,1.5,1.5,1.3999999999999999,1.5,1.2,1.3,1.3999999999999999,1.3,1.5,1.3,1.3,1.3,1.6000000000000001,1.8999999999999999,1.3999999999999999,1.6000000000000001,1.3999999999999999,1.5,1.3999999999999999],"text":["Petal.Width: 0.2<br />Petal.Length: 1.4<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.4<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.3<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.5<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.4<br />Species: setosa","Petal.Width: 0.4<br />Petal.Length: 1.7<br />Species: setosa","Petal.Width: 0.3<br />Petal.Length: 1.4<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.5<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.4<br />Species: setosa","Petal.Width: 0.1<br />Petal.Length: 1.5<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.5<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.6<br />Species: setosa","Petal.Width: 0.1<br />Petal.Length: 1.4<br />Species: setosa","Petal.Width: 0.1<br />Petal.Length: 1.1<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.2<br />Species: setosa","Petal.Width: 0.4<br />Petal.Length: 1.5<br />Species: setosa","Petal.Width: 0.4<br />Petal.Length: 1.3<br />Species: setosa","Petal.Width: 0.3<br />Petal.Length: 1.4<br />Species: setosa","Petal.Width: 0.3<br />Petal.Length: 1.7<br />Species: setosa","Petal.Width: 0.3<br />Petal.Length: 1.5<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.7<br />Species: setosa","Petal.Width: 0.4<br />Petal.Length: 1.5<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.0<br />Species: setosa","Petal.Width: 0.5<br />Petal.Length: 1.7<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.9<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.6<br />Species: setosa","Petal.Width: 0.4<br />Petal.Length: 1.6<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.5<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.4<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.6<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.6<br />Species: setosa","Petal.Width: 0.4<br />Petal.Length: 1.5<br />Species: setosa","Petal.Width: 0.1<br />Petal.Length: 1.5<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.4<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.5<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.2<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.3<br />Species: setosa","Petal.Width: 0.1<br />Petal.Length: 1.4<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.3<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.5<br />Species: setosa","Petal.Width: 0.3<br />Petal.Length: 1.3<br />Species: setosa","Petal.Width: 0.3<br />Petal.Length: 1.3<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.3<br />Species: setosa","Petal.Width: 0.6<br />Petal.Length: 1.6<br />Species: setosa","Petal.Width: 0.4<br />Petal.Length: 1.9<br />Species: setosa","Petal.Width: 0.3<br />Petal.Length: 1.4<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.6<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.4<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.5<br />Species: setosa","Petal.Width: 0.2<br />Petal.Length: 1.4<br />Species: setosa"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(176,224,230,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(176,224,230,1)"}},"hoveron":"points","name":"setosa","legendgroup":"setosa","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.3999999999999999,1.5,1.5,1.3,1.5,1.3,1.6000000000000001,1,1.3,1.3999999999999999,1,1.5,1,1.3999999999999999,1.3,1.3999999999999999,1.5,1,1.5,1.1000000000000001,1.8,1.3,1.5,1.2,1.3,1.3999999999999999,1.3999999999999999,1.7,1.5,1,1.1000000000000001,1,1.2,1.6000000000000001,1.5,1.6000000000000001,1.5,1.3,1.3,1.3,1.2,1.3999999999999999,1.2,1,1.3,1.2,1.3,1.3,1.1000000000000001,1.3],"y":[4.7000000000000002,4.5,4.9000000000000004,4,4.5999999999999996,4.5,4.7000000000000002,3.2999999999999998,4.5999999999999996,3.8999999999999999,3.5,4.2000000000000002,4,4.7000000000000002,3.6000000000000001,4.4000000000000004,4.5,4.0999999999999996,4.5,3.8999999999999999,4.7999999999999998,4,4.9000000000000004,4.7000000000000002,4.2999999999999998,4.4000000000000004,4.7999999999999998,5,4.5,3.5,3.7999999999999998,3.7000000000000002,3.8999999999999999,5.0999999999999996,4.5,4.5,4.7000000000000002,4.4000000000000004,4.0999999999999996,4,4.4000000000000004,4.5999999999999996,4,3.2999999999999998,4.2000000000000002,4.2000000000000002,4.2000000000000002,4.2999999999999998,3,4.0999999999999996],"text":["Petal.Width: 1.4<br />Petal.Length: 4.7<br />Species: versicolor","Petal.Width: 1.5<br />Petal.Length: 4.5<br />Species: versicolor","Petal.Width: 1.5<br />Petal.Length: 4.9<br />Species: versicolor","Petal.Width: 1.3<br />Petal.Length: 4.0<br />Species: versicolor","Petal.Width: 1.5<br />Petal.Length: 4.6<br />Species: versicolor","Petal.Width: 1.3<br />Petal.Length: 4.5<br />Species: versicolor","Petal.Width: 1.6<br />Petal.Length: 4.7<br />Species: versicolor","Petal.Width: 1.0<br />Petal.Length: 3.3<br />Species: versicolor","Petal.Width: 1.3<br />Petal.Length: 4.6<br />Species: versicolor","Petal.Width: 1.4<br />Petal.Length: 3.9<br />Species: versicolor","Petal.Width: 1.0<br />Petal.Length: 3.5<br />Species: versicolor","Petal.Width: 1.5<br />Petal.Length: 4.2<br />Species: versicolor","Petal.Width: 1.0<br />Petal.Length: 4.0<br />Species: versicolor","Petal.Width: 1.4<br />Petal.Length: 4.7<br />Species: versicolor","Petal.Width: 1.3<br />Petal.Length: 3.6<br />Species: versicolor","Petal.Width: 1.4<br />Petal.Length: 4.4<br />Species: versicolor","Petal.Width: 1.5<br />Petal.Length: 4.5<br />Species: versicolor","Petal.Width: 1.0<br />Petal.Length: 4.1<br />Species: versicolor","Petal.Width: 1.5<br />Petal.Length: 4.5<br />Species: versicolor","Petal.Width: 1.1<br />Petal.Length: 3.9<br />Species: versicolor","Petal.Width: 1.8<br />Petal.Length: 4.8<br />Species: versicolor","Petal.Width: 1.3<br />Petal.Length: 4.0<br />Species: versicolor","Petal.Width: 1.5<br />Petal.Length: 4.9<br />Species: versicolor","Petal.Width: 1.2<br />Petal.Length: 4.7<br />Species: versicolor","Petal.Width: 1.3<br />Petal.Length: 4.3<br />Species: versicolor","Petal.Width: 1.4<br />Petal.Length: 4.4<br />Species: versicolor","Petal.Width: 1.4<br />Petal.Length: 4.8<br />Species: versicolor","Petal.Width: 1.7<br />Petal.Length: 5.0<br />Species: versicolor","Petal.Width: 1.5<br />Petal.Length: 4.5<br />Species: versicolor","Petal.Width: 1.0<br />Petal.Length: 3.5<br />Species: versicolor","Petal.Width: 1.1<br />Petal.Length: 3.8<br />Species: versicolor","Petal.Width: 1.0<br />Petal.Length: 3.7<br />Species: versicolor","Petal.Width: 1.2<br />Petal.Length: 3.9<br />Species: versicolor","Petal.Width: 1.6<br />Petal.Length: 5.1<br />Species: versicolor","Petal.Width: 1.5<br />Petal.Length: 4.5<br />Species: versicolor","Petal.Width: 1.6<br />Petal.Length: 4.5<br />Species: versicolor","Petal.Width: 1.5<br />Petal.Length: 4.7<br />Species: versicolor","Petal.Width: 1.3<br />Petal.Length: 4.4<br />Species: versicolor","Petal.Width: 1.3<br />Petal.Length: 4.1<br />Species: versicolor","Petal.Width: 1.3<br />Petal.Length: 4.0<br />Species: versicolor","Petal.Width: 1.2<br />Petal.Length: 4.4<br />Species: versicolor","Petal.Width: 1.4<br />Petal.Length: 4.6<br />Species: versicolor","Petal.Width: 1.2<br />Petal.Length: 4.0<br />Species: versicolor","Petal.Width: 1.0<br />Petal.Length: 3.3<br />Species: versicolor","Petal.Width: 1.3<br />Petal.Length: 4.2<br />Species: versicolor","Petal.Width: 1.2<br />Petal.Length: 4.2<br />Species: versicolor","Petal.Width: 1.3<br />Petal.Length: 4.2<br />Species: versicolor","Petal.Width: 1.3<br />Petal.Length: 4.3<br />Species: versicolor","Petal.Width: 1.1<br />Petal.Length: 3.0<br />Species: versicolor","Petal.Width: 1.3<br />Petal.Length: 4.1<br />Species: versicolor"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(205,181,205,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(205,181,205,1)"}},"hoveron":"points","name":"versicolor","legendgroup":"versicolor","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.5,1.8999999999999999,2.1000000000000001,1.8,2.2000000000000002,2.1000000000000001,1.7,1.8,1.8,2.5,2,1.8999999999999999,2.1000000000000001,2,2.3999999999999999,2.2999999999999998,1.8,2.2000000000000002,2.2999999999999998,1.5,2.2999999999999998,2,2,1.8,2.1000000000000001,1.8,1.8,1.8,2.1000000000000001,1.6000000000000001,1.8999999999999999,2,2.2000000000000002,1.5,1.3999999999999999,2.2999999999999998,2.3999999999999999,1.8,1.8,2.1000000000000001,2.3999999999999999,2.2999999999999998,1.8999999999999999,2.2999999999999998,2.5,2.2999999999999998,1.8999999999999999,2,2.2999999999999998,1.8],"y":[6,5.0999999999999996,5.9000000000000004,5.5999999999999996,5.7999999999999998,6.5999999999999996,4.5,6.2999999999999998,5.7999999999999998,6.0999999999999996,5.0999999999999996,5.2999999999999998,5.5,5,5.0999999999999996,5.2999999999999998,5.5,6.7000000000000002,6.9000000000000004,5,5.7000000000000002,4.9000000000000004,6.7000000000000002,4.9000000000000004,5.7000000000000002,6,4.7999999999999998,4.9000000000000004,5.5999999999999996,5.7999999999999998,6.0999999999999996,6.4000000000000004,5.5999999999999996,5.0999999999999996,5.5999999999999996,6.0999999999999996,5.5999999999999996,5.5,4.7999999999999998,5.4000000000000004,5.5999999999999996,5.0999999999999996,5.0999999999999996,5.9000000000000004,5.7000000000000002,5.2000000000000002,5,5.2000000000000002,5.4000000000000004,5.0999999999999996],"text":["Petal.Width: 2.5<br />Petal.Length: 6.0<br />Species: virginica","Petal.Width: 1.9<br />Petal.Length: 5.1<br />Species: virginica","Petal.Width: 2.1<br />Petal.Length: 5.9<br />Species: virginica","Petal.Width: 1.8<br />Petal.Length: 5.6<br />Species: virginica","Petal.Width: 2.2<br />Petal.Length: 5.8<br />Species: virginica","Petal.Width: 2.1<br />Petal.Length: 6.6<br />Species: virginica","Petal.Width: 1.7<br />Petal.Length: 4.5<br />Species: virginica","Petal.Width: 1.8<br />Petal.Length: 6.3<br />Species: virginica","Petal.Width: 1.8<br />Petal.Length: 5.8<br />Species: virginica","Petal.Width: 2.5<br />Petal.Length: 6.1<br />Species: virginica","Petal.Width: 2.0<br />Petal.Length: 5.1<br />Species: virginica","Petal.Width: 1.9<br />Petal.Length: 5.3<br />Species: virginica","Petal.Width: 2.1<br />Petal.Length: 5.5<br />Species: virginica","Petal.Width: 2.0<br />Petal.Length: 5.0<br />Species: virginica","Petal.Width: 2.4<br />Petal.Length: 5.1<br />Species: virginica","Petal.Width: 2.3<br />Petal.Length: 5.3<br />Species: virginica","Petal.Width: 1.8<br />Petal.Length: 5.5<br />Species: virginica","Petal.Width: 2.2<br />Petal.Length: 6.7<br />Species: virginica","Petal.Width: 2.3<br />Petal.Length: 6.9<br />Species: virginica","Petal.Width: 1.5<br />Petal.Length: 5.0<br />Species: virginica","Petal.Width: 2.3<br />Petal.Length: 5.7<br />Species: virginica","Petal.Width: 2.0<br />Petal.Length: 4.9<br />Species: virginica","Petal.Width: 2.0<br />Petal.Length: 6.7<br />Species: virginica","Petal.Width: 1.8<br />Petal.Length: 4.9<br />Species: virginica","Petal.Width: 2.1<br />Petal.Length: 5.7<br />Species: virginica","Petal.Width: 1.8<br />Petal.Length: 6.0<br />Species: virginica","Petal.Width: 1.8<br />Petal.Length: 4.8<br />Species: virginica","Petal.Width: 1.8<br />Petal.Length: 4.9<br />Species: virginica","Petal.Width: 2.1<br />Petal.Length: 5.6<br />Species: virginica","Petal.Width: 1.6<br />Petal.Length: 5.8<br />Species: virginica","Petal.Width: 1.9<br />Petal.Length: 6.1<br />Species: virginica","Petal.Width: 2.0<br />Petal.Length: 6.4<br />Species: virginica","Petal.Width: 2.2<br />Petal.Length: 5.6<br />Species: virginica","Petal.Width: 1.5<br />Petal.Length: 5.1<br />Species: virginica","Petal.Width: 1.4<br />Petal.Length: 5.6<br />Species: virginica","Petal.Width: 2.3<br />Petal.Length: 6.1<br />Species: virginica","Petal.Width: 2.4<br />Petal.Length: 5.6<br />Species: virginica","Petal.Width: 1.8<br />Petal.Length: 5.5<br />Species: virginica","Petal.Width: 1.8<br />Petal.Length: 4.8<br />Species: virginica","Petal.Width: 2.1<br />Petal.Length: 5.4<br />Species: virginica","Petal.Width: 2.4<br />Petal.Length: 5.6<br />Species: virginica","Petal.Width: 2.3<br />Petal.Length: 5.1<br />Species: virginica","Petal.Width: 1.9<br />Petal.Length: 5.1<br />Species: virginica","Petal.Width: 2.3<br />Petal.Length: 5.9<br />Species: virginica","Petal.Width: 2.5<br />Petal.Length: 5.7<br />Species: virginica","Petal.Width: 2.3<br />Petal.Length: 5.2<br />Species: virginica","Petal.Width: 1.9<br />Petal.Length: 5.0<br />Species: virginica","Petal.Width: 2.0<br />Petal.Length: 5.2<br />Species: virginica","Petal.Width: 2.3<br />Petal.Length: 5.4<br />Species: virginica","Petal.Width: 1.8<br />Petal.Length: 5.1<br />Species: virginica"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(255,192,203,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(255,192,203,1)"}},"hoveron":"points","name":"virginica","legendgroup":"virginica","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.10000000000000001,0.10632911392405064,0.11265822784810127,0.11898734177215191,0.12531645569620253,0.13164556962025317,0.13797468354430381,0.14430379746835442,0.15063291139240506,0.1569620253164557,0.16329113924050634,0.16962025316455698,0.17594936708860759,0.18227848101265823,0.18860759493670887,0.19493670886075948,0.20126582278481014,0.20759493670886076,0.21392405063291139,0.22025316455696203,0.22658227848101267,0.23291139240506328,0.23924050632911392,0.24556962025316456,0.2518987341772152,0.25822784810126587,0.26455696202531642,0.27088607594936709,0.27721518987341776,0.28354430379746837,0.28987341772151898,0.29620253164556964,0.30253164556962026,0.30886075949367087,0.31518987341772153,0.32151898734177214,0.32784810126582276,0.33417721518987342,0.34050632911392409,0.34683544303797464,0.35316455696202531,0.35949367088607598,0.36582278481012653,0.3721518987341772,0.37848101265822787,0.38481012658227853,0.39113924050632909,0.39746835443037976,0.40379746835443042,0.41012658227848098,0.41645569620253164,0.42278481012658231,0.42911392405063287,0.43544303797468353,0.4417721518987342,0.44810126582278476,0.45443037974683542,0.46075949367088609,0.46708860759493676,0.47341772151898731,0.47974683544303798,0.48607594936708864,0.4924050632911392,0.49873417721518987,0.50506329113924053,0.51139240506329109,0.51772151898734176,0.52405063291139242,0.53037974683544309,0.53670886075949364,0.54303797468354431,0.54936708860759498,0.55569620253164553,0.5620253164556962,0.56835443037974687,0.57468354430379742,0.58101265822784809,0.58734177215189876,0.59367088607594931,0.59999999999999998],"y":[1.3822124219037111,1.3856712210235431,1.3891300201433754,1.3925888192632074,1.3960476183830397,1.3995064175028717,1.402965216622704,1.4064240157425361,1.4098828148623683,1.4133416139822004,1.4168004131020326,1.4202592122218647,1.423718011341697,1.427176810461529,1.4306356095813613,1.4340944087011933,1.4375532078210256,1.4410120069408576,1.4444708060606899,1.4479296051805219,1.4513884043003542,1.4548472034201863,1.4583060025400185,1.4617648016598506,1.4652236007796828,1.4686823998995151,1.4721411990193471,1.4755999981391792,1.4790587972590115,1.4825175963788435,1.4859763954986758,1.4894351946185078,1.4928939937383401,1.4963527928581721,1.4998115919780044,1.5032703910978364,1.5067291902176687,1.5101879893375008,1.513646788457333,1.5171055875771651,1.5205643866969973,1.5240231858168296,1.5274819849366617,1.5309407840564937,1.534399583176326,1.5378583822961582,1.5413171814159903,1.5447759805358223,1.5482347796556546,1.5516935787754866,1.5551523778953189,1.558611177015151,1.5620699761349832,1.5655287752548153,1.5689875743746475,1.5724463734944796,1.5759051726143118,1.5793639717341441,1.5828227708539762,1.5862815699738082,1.5897403690936405,1.5931991682134727,1.5966579673333048,1.6001167664531368,1.6035755655729691,1.6070343646928011,1.6104931638126334,1.6139519629324655,1.6174107620522977,1.6208695611721298,1.624328360291962,1.6277871594117941,1.6312459585316263,1.6347047576514586,1.6381635567712907,1.6416223558911227,1.645081155010955,1.6485399541307872,1.6519987532506193,1.6554575523704513],"text":["Petal.Width: 0.1000000<br />Petal.Length: 1.382212<br />Species: setosa","Petal.Width: 0.1063291<br />Petal.Length: 1.385671<br />Species: setosa","Petal.Width: 0.1126582<br />Petal.Length: 1.389130<br />Species: setosa","Petal.Width: 0.1189873<br />Petal.Length: 1.392589<br />Species: setosa","Petal.Width: 0.1253165<br />Petal.Length: 1.396048<br />Species: setosa","Petal.Width: 0.1316456<br />Petal.Length: 1.399506<br />Species: setosa","Petal.Width: 0.1379747<br />Petal.Length: 1.402965<br />Species: setosa","Petal.Width: 0.1443038<br />Petal.Length: 1.406424<br />Species: setosa","Petal.Width: 0.1506329<br />Petal.Length: 1.409883<br />Species: setosa","Petal.Width: 0.1569620<br />Petal.Length: 1.413342<br />Species: setosa","Petal.Width: 0.1632911<br />Petal.Length: 1.416800<br />Species: setosa","Petal.Width: 0.1696203<br />Petal.Length: 1.420259<br />Species: setosa","Petal.Width: 0.1759494<br />Petal.Length: 1.423718<br />Species: setosa","Petal.Width: 0.1822785<br />Petal.Length: 1.427177<br />Species: setosa","Petal.Width: 0.1886076<br />Petal.Length: 1.430636<br />Species: setosa","Petal.Width: 0.1949367<br />Petal.Length: 1.434094<br />Species: setosa","Petal.Width: 0.2012658<br />Petal.Length: 1.437553<br />Species: setosa","Petal.Width: 0.2075949<br />Petal.Length: 1.441012<br />Species: setosa","Petal.Width: 0.2139241<br />Petal.Length: 1.444471<br />Species: setosa","Petal.Width: 0.2202532<br />Petal.Length: 1.447930<br />Species: setosa","Petal.Width: 0.2265823<br />Petal.Length: 1.451388<br />Species: setosa","Petal.Width: 0.2329114<br />Petal.Length: 1.454847<br />Species: setosa","Petal.Width: 0.2392405<br />Petal.Length: 1.458306<br />Species: setosa","Petal.Width: 0.2455696<br />Petal.Length: 1.461765<br />Species: setosa","Petal.Width: 0.2518987<br />Petal.Length: 1.465224<br />Species: setosa","Petal.Width: 0.2582278<br />Petal.Length: 1.468682<br />Species: setosa","Petal.Width: 0.2645570<br />Petal.Length: 1.472141<br />Species: setosa","Petal.Width: 0.2708861<br />Petal.Length: 1.475600<br />Species: setosa","Petal.Width: 0.2772152<br />Petal.Length: 1.479059<br />Species: setosa","Petal.Width: 0.2835443<br />Petal.Length: 1.482518<br />Species: setosa","Petal.Width: 0.2898734<br />Petal.Length: 1.485976<br />Species: setosa","Petal.Width: 0.2962025<br />Petal.Length: 1.489435<br />Species: setosa","Petal.Width: 0.3025316<br />Petal.Length: 1.492894<br />Species: setosa","Petal.Width: 0.3088608<br />Petal.Length: 1.496353<br />Species: setosa","Petal.Width: 0.3151899<br />Petal.Length: 1.499812<br />Species: setosa","Petal.Width: 0.3215190<br />Petal.Length: 1.503270<br />Species: setosa","Petal.Width: 0.3278481<br />Petal.Length: 1.506729<br />Species: setosa","Petal.Width: 0.3341772<br />Petal.Length: 1.510188<br />Species: setosa","Petal.Width: 0.3405063<br />Petal.Length: 1.513647<br />Species: setosa","Petal.Width: 0.3468354<br />Petal.Length: 1.517106<br />Species: setosa","Petal.Width: 0.3531646<br />Petal.Length: 1.520564<br />Species: setosa","Petal.Width: 0.3594937<br />Petal.Length: 1.524023<br />Species: setosa","Petal.Width: 0.3658228<br />Petal.Length: 1.527482<br />Species: setosa","Petal.Width: 0.3721519<br />Petal.Length: 1.530941<br />Species: setosa","Petal.Width: 0.3784810<br />Petal.Length: 1.534400<br />Species: setosa","Petal.Width: 0.3848101<br />Petal.Length: 1.537858<br />Species: setosa","Petal.Width: 0.3911392<br />Petal.Length: 1.541317<br />Species: setosa","Petal.Width: 0.3974684<br />Petal.Length: 1.544776<br />Species: setosa","Petal.Width: 0.4037975<br />Petal.Length: 1.548235<br />Species: setosa","Petal.Width: 0.4101266<br />Petal.Length: 1.551694<br />Species: setosa","Petal.Width: 0.4164557<br />Petal.Length: 1.555152<br />Species: setosa","Petal.Width: 0.4227848<br />Petal.Length: 1.558611<br />Species: setosa","Petal.Width: 0.4291139<br />Petal.Length: 1.562070<br />Species: setosa","Petal.Width: 0.4354430<br />Petal.Length: 1.565529<br />Species: setosa","Petal.Width: 0.4417722<br />Petal.Length: 1.568988<br />Species: setosa","Petal.Width: 0.4481013<br />Petal.Length: 1.572446<br />Species: setosa","Petal.Width: 0.4544304<br />Petal.Length: 1.575905<br />Species: setosa","Petal.Width: 0.4607595<br />Petal.Length: 1.579364<br />Species: setosa","Petal.Width: 0.4670886<br />Petal.Length: 1.582823<br />Species: setosa","Petal.Width: 0.4734177<br />Petal.Length: 1.586282<br />Species: setosa","Petal.Width: 0.4797468<br />Petal.Length: 1.589740<br />Species: setosa","Petal.Width: 0.4860759<br />Petal.Length: 1.593199<br />Species: setosa","Petal.Width: 0.4924051<br />Petal.Length: 1.596658<br />Species: setosa","Petal.Width: 0.4987342<br />Petal.Length: 1.600117<br />Species: setosa","Petal.Width: 0.5050633<br />Petal.Length: 1.603576<br />Species: setosa","Petal.Width: 0.5113924<br />Petal.Length: 1.607034<br />Species: setosa","Petal.Width: 0.5177215<br />Petal.Length: 1.610493<br />Species: setosa","Petal.Width: 0.5240506<br />Petal.Length: 1.613952<br />Species: setosa","Petal.Width: 0.5303797<br />Petal.Length: 1.617411<br />Species: setosa","Petal.Width: 0.5367089<br />Petal.Length: 1.620870<br />Species: setosa","Petal.Width: 0.5430380<br />Petal.Length: 1.624328<br />Species: setosa","Petal.Width: 0.5493671<br />Petal.Length: 1.627787<br />Species: setosa","Petal.Width: 0.5556962<br />Petal.Length: 1.631246<br />Species: setosa","Petal.Width: 0.5620253<br />Petal.Length: 1.634705<br />Species: setosa","Petal.Width: 0.5683544<br />Petal.Length: 1.638164<br />Species: setosa","Petal.Width: 0.5746835<br />Petal.Length: 1.641622<br />Species: setosa","Petal.Width: 0.5810127<br />Petal.Length: 1.645081<br />Species: setosa","Petal.Width: 0.5873418<br />Petal.Length: 1.648540<br />Species: setosa","Petal.Width: 0.5936709<br />Petal.Length: 1.651999<br />Species: setosa","Petal.Width: 0.6000000<br />Petal.Length: 1.655458<br />Species: setosa"],"type":"scatter","mode":"lines","name":"setosa","line":{"width":3.7795275590551185,"color":"rgba(176,224,230,1)","dash":"solid"},"hoveron":"points","legendgroup":"setosa","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1,1.0101265822784811,1.0202531645569621,1.030379746835443,1.040506329113924,1.0506329113924051,1.0607594936708862,1.070886075949367,1.0810126582278481,1.0911392405063292,1.1012658227848102,1.1113924050632911,1.1215189873417721,1.1316455696202532,1.1417721518987343,1.1518987341772151,1.1620253164556962,1.1721518987341772,1.1822784810126583,1.1924050632911392,1.2025316455696202,1.2126582278481013,1.2227848101265824,1.2329113924050632,1.2430379746835443,1.2531645569620253,1.2632911392405064,1.2734177215189875,1.2835443037974683,1.2936708860759494,1.3037974683544304,1.3139240506329113,1.3240506329113924,1.3341772151898734,1.3443037974683545,1.3544303797468356,1.3645569620253164,1.3746835443037975,1.3848101265822785,1.3949367088607594,1.4050632911392404,1.4151898734177215,1.4253164556962026,1.4354430379746836,1.4455696202531645,1.4556962025316456,1.4658227848101266,1.4759493670886075,1.4860759493670885,1.4962025316455696,1.5063291139240507,1.5164556962025317,1.5265822784810128,1.5367088607594936,1.5468354430379747,1.5569620253164556,1.5670886075949366,1.5772151898734177,1.5873417721518988,1.5974683544303798,1.6075949367088609,1.6177215189873417,1.6278481012658228,1.6379746835443036,1.6481012658227847,1.6582278481012658,1.6683544303797468,1.6784810126582279,1.688607594936709,1.69873417721519,1.7088607594936709,1.718987341772152,1.7291139240506328,1.7392405063291139,1.7493670886075949,1.759493670886076,1.7696202531645571,1.7797468354430381,1.789873417721519,1.8],"y":[3.6506001461225326,3.6695300165543867,3.6884598869862408,3.707389757418095,3.7263196278499491,3.7452494982818036,3.7641793687136578,3.7831092391455114,3.802039109577366,3.8209689800092201,3.8398988504410747,3.8588287208729284,3.877758591304783,3.8966884617366371,3.9156183321684912,3.9345482026003453,3.9534780730321994,3.972407943464054,3.9913378138959081,4.0102676843277614,4.0291975547596159,4.0481274251914705,4.0670572956233251,4.0859871660551788,4.1049170364870333,4.123846906918887,4.1427767773507416,4.1617066477825961,4.1806365182144498,4.1995663886463044,4.2184962590781581,4.2374261295100126,4.2563559999418672,4.2752858703737209,4.2942157408055754,4.3131456112374291,4.3320754816692837,4.3510053521011383,4.3699352225329919,4.3888650929648456,4.4077949633967002,4.4267248338285548,4.4456547042604093,4.464584574692263,4.4835144451241167,4.5024443155559712,4.5213741859878258,4.5403040564196795,4.5592339268515341,4.5781637972833877,4.5970936677152423,4.6160235381470969,4.6349534085789514,4.6538832790108051,4.6728131494426588,4.6917430198745134,4.7106728903063679,4.7296027607382216,4.7485326311700762,4.7674625016019299,4.7863923720337844,4.805322242465639,4.8242521128974927,4.8431819833293464,4.8621118537612009,4.8810417241930555,4.8999715946249101,4.9189014650567637,4.9378313354886183,4.956761205920472,4.9756910763523265,4.9946209467841811,5.0135508172160348,5.0324806876478885,5.051410558079743,5.0703404285115976,5.0892702989434522,5.1082001693753067,5.1271300398071595,5.1460599102390141],"text":["Petal.Width: 1.0000000<br />Petal.Length: 3.650600<br />Species: versicolor","Petal.Width: 1.0101266<br />Petal.Length: 3.669530<br />Species: versicolor","Petal.Width: 1.0202532<br />Petal.Length: 3.688460<br />Species: versicolor","Petal.Width: 1.0303797<br />Petal.Length: 3.707390<br />Species: versicolor","Petal.Width: 1.0405063<br />Petal.Length: 3.726320<br />Species: versicolor","Petal.Width: 1.0506329<br />Petal.Length: 3.745249<br />Species: versicolor","Petal.Width: 1.0607595<br />Petal.Length: 3.764179<br />Species: versicolor","Petal.Width: 1.0708861<br />Petal.Length: 3.783109<br />Species: versicolor","Petal.Width: 1.0810127<br />Petal.Length: 3.802039<br />Species: versicolor","Petal.Width: 1.0911392<br />Petal.Length: 3.820969<br />Species: versicolor","Petal.Width: 1.1012658<br />Petal.Length: 3.839899<br />Species: versicolor","Petal.Width: 1.1113924<br />Petal.Length: 3.858829<br />Species: versicolor","Petal.Width: 1.1215190<br />Petal.Length: 3.877759<br />Species: versicolor","Petal.Width: 1.1316456<br />Petal.Length: 3.896688<br />Species: versicolor","Petal.Width: 1.1417722<br />Petal.Length: 3.915618<br />Species: versicolor","Petal.Width: 1.1518987<br />Petal.Length: 3.934548<br />Species: versicolor","Petal.Width: 1.1620253<br />Petal.Length: 3.953478<br />Species: versicolor","Petal.Width: 1.1721519<br />Petal.Length: 3.972408<br />Species: versicolor","Petal.Width: 1.1822785<br />Petal.Length: 3.991338<br />Species: versicolor","Petal.Width: 1.1924051<br />Petal.Length: 4.010268<br />Species: versicolor","Petal.Width: 1.2025316<br />Petal.Length: 4.029198<br />Species: versicolor","Petal.Width: 1.2126582<br />Petal.Length: 4.048127<br />Species: versicolor","Petal.Width: 1.2227848<br />Petal.Length: 4.067057<br />Species: versicolor","Petal.Width: 1.2329114<br />Petal.Length: 4.085987<br />Species: versicolor","Petal.Width: 1.2430380<br />Petal.Length: 4.104917<br />Species: versicolor","Petal.Width: 1.2531646<br />Petal.Length: 4.123847<br />Species: versicolor","Petal.Width: 1.2632911<br />Petal.Length: 4.142777<br />Species: versicolor","Petal.Width: 1.2734177<br />Petal.Length: 4.161707<br />Species: versicolor","Petal.Width: 1.2835443<br />Petal.Length: 4.180637<br />Species: versicolor","Petal.Width: 1.2936709<br />Petal.Length: 4.199566<br />Species: versicolor","Petal.Width: 1.3037975<br />Petal.Length: 4.218496<br />Species: versicolor","Petal.Width: 1.3139241<br />Petal.Length: 4.237426<br />Species: versicolor","Petal.Width: 1.3240506<br />Petal.Length: 4.256356<br />Species: versicolor","Petal.Width: 1.3341772<br />Petal.Length: 4.275286<br />Species: versicolor","Petal.Width: 1.3443038<br />Petal.Length: 4.294216<br />Species: versicolor","Petal.Width: 1.3544304<br />Petal.Length: 4.313146<br />Species: versicolor","Petal.Width: 1.3645570<br />Petal.Length: 4.332075<br />Species: versicolor","Petal.Width: 1.3746835<br />Petal.Length: 4.351005<br />Species: versicolor","Petal.Width: 1.3848101<br />Petal.Length: 4.369935<br />Species: versicolor","Petal.Width: 1.3949367<br />Petal.Length: 4.388865<br />Species: versicolor","Petal.Width: 1.4050633<br />Petal.Length: 4.407795<br />Species: versicolor","Petal.Width: 1.4151899<br />Petal.Length: 4.426725<br />Species: versicolor","Petal.Width: 1.4253165<br />Petal.Length: 4.445655<br />Species: versicolor","Petal.Width: 1.4354430<br />Petal.Length: 4.464585<br />Species: versicolor","Petal.Width: 1.4455696<br />Petal.Length: 4.483514<br />Species: versicolor","Petal.Width: 1.4556962<br />Petal.Length: 4.502444<br />Species: versicolor","Petal.Width: 1.4658228<br />Petal.Length: 4.521374<br />Species: versicolor","Petal.Width: 1.4759494<br />Petal.Length: 4.540304<br />Species: versicolor","Petal.Width: 1.4860759<br />Petal.Length: 4.559234<br />Species: versicolor","Petal.Width: 1.4962025<br />Petal.Length: 4.578164<br />Species: versicolor","Petal.Width: 1.5063291<br />Petal.Length: 4.597094<br />Species: versicolor","Petal.Width: 1.5164557<br />Petal.Length: 4.616024<br />Species: versicolor","Petal.Width: 1.5265823<br />Petal.Length: 4.634953<br />Species: versicolor","Petal.Width: 1.5367089<br />Petal.Length: 4.653883<br />Species: versicolor","Petal.Width: 1.5468354<br />Petal.Length: 4.672813<br />Species: versicolor","Petal.Width: 1.5569620<br />Petal.Length: 4.691743<br />Species: versicolor","Petal.Width: 1.5670886<br />Petal.Length: 4.710673<br />Species: versicolor","Petal.Width: 1.5772152<br />Petal.Length: 4.729603<br />Species: versicolor","Petal.Width: 1.5873418<br />Petal.Length: 4.748533<br />Species: versicolor","Petal.Width: 1.5974684<br />Petal.Length: 4.767463<br />Species: versicolor","Petal.Width: 1.6075949<br />Petal.Length: 4.786392<br />Species: versicolor","Petal.Width: 1.6177215<br />Petal.Length: 4.805322<br />Species: versicolor","Petal.Width: 1.6278481<br />Petal.Length: 4.824252<br />Species: versicolor","Petal.Width: 1.6379747<br />Petal.Length: 4.843182<br />Species: versicolor","Petal.Width: 1.6481013<br />Petal.Length: 4.862112<br />Species: versicolor","Petal.Width: 1.6582278<br />Petal.Length: 4.881042<br />Species: versicolor","Petal.Width: 1.6683544<br />Petal.Length: 4.899972<br />Species: versicolor","Petal.Width: 1.6784810<br />Petal.Length: 4.918901<br />Species: versicolor","Petal.Width: 1.6886076<br />Petal.Length: 4.937831<br />Species: versicolor","Petal.Width: 1.6987342<br />Petal.Length: 4.956761<br />Species: versicolor","Petal.Width: 1.7088608<br />Petal.Length: 4.975691<br />Species: versicolor","Petal.Width: 1.7189873<br />Petal.Length: 4.994621<br />Species: versicolor","Petal.Width: 1.7291139<br />Petal.Length: 5.013551<br />Species: versicolor","Petal.Width: 1.7392405<br />Petal.Length: 5.032481<br />Species: versicolor","Petal.Width: 1.7493671<br />Petal.Length: 5.051411<br />Species: versicolor","Petal.Width: 1.7594937<br />Petal.Length: 5.070340<br />Species: versicolor","Petal.Width: 1.7696203<br />Petal.Length: 5.089270<br />Species: versicolor","Petal.Width: 1.7797468<br />Petal.Length: 5.108200<br />Species: versicolor","Petal.Width: 1.7898734<br />Petal.Length: 5.127130<br />Species: versicolor","Petal.Width: 1.8000000<br />Petal.Length: 5.146060<br />Species: versicolor"],"type":"scatter","mode":"lines","name":"versicolor","line":{"width":3.7795275590551185,"color":"rgba(205,181,205,1)","dash":"solid"},"hoveron":"points","legendgroup":"versicolor","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.3999999999999999,1.4139240506329114,1.4278481012658226,1.4417721518987341,1.4556962025316456,1.4696202531645568,1.4835443037974683,1.4974683544303797,1.511392405063291,1.5253164556962024,1.5392405063291139,1.5531645569620252,1.5670886075949366,1.5810126582278481,1.5949367088607593,1.6088607594936708,1.6227848101265823,1.6367088607594935,1.650632911392405,1.6645569620253164,1.6784810126582279,1.6924050632911392,1.7063291139240506,1.7202531645569619,1.7341772151898733,1.7481012658227848,1.7620253164556963,1.7759493670886075,1.789873417721519,1.8037974683544302,1.8177215189873417,1.8316455696202532,1.8455696202531646,1.8594936708860759,1.8734177215189873,1.8873417721518986,1.90126582278481,1.9151898734177215,1.929113924050633,1.9430379746835442,1.9569620253164557,1.9708860759493669,1.9848101265822784,1.9987341772151899,2.0126582278481013,2.0265822784810128,2.0405063291139243,2.0544303797468353,2.0683544303797468,2.0822784810126582,2.0962025316455697,2.1101265822784812,2.1240506329113922,2.1379746835443036,2.1518987341772151,2.1658227848101266,2.179746835443038,2.1936708860759495,2.207594936708861,2.221518987341772,2.2354430379746835,2.2493670886075949,2.2632911392405064,2.2772151898734179,2.2911392405063289,2.3050632911392404,2.3189873417721518,2.3329113924050633,2.3468354430379748,2.3607594936708862,2.3746835443037977,2.3886075949367087,2.4025316455696202,2.4164556962025316,2.4303797468354431,2.4443037974683541,2.4582278481012656,2.4721518987341771,2.4860759493670885,2.5],"y":[5.1468156485038685,5.1558281204302192,5.164840592356569,5.1738530642829197,5.1828655362092704,5.1918780081356211,5.2008904800619717,5.2099029519883224,5.2189154239146731,5.2279278958410238,5.2369403677673745,5.2459528396937252,5.2549653116200759,5.2639777835464265,5.2729902554727772,5.282002727399127,5.2910151993254777,5.3000276712518284,5.3090401431781791,5.3180526151045298,5.3270650870308804,5.3360775589572311,5.3450900308835818,5.3541025028099325,5.3631149747362823,5.372127446662633,5.3811399185889837,5.3901523905153343,5.399164862441685,5.4081773343680357,5.4171898062943864,5.4262022782207371,5.4352147501470878,5.4442272220734385,5.4532396939997891,5.4622521659261398,5.4712646378524905,5.4802771097788412,5.4892895817051919,5.4983020536315417,5.5073145255578924,5.516326997484243,5.5253394694105937,5.5343519413369444,5.5433644132632951,5.5523768851896458,5.5613893571159965,5.5704018290423472,5.5794143009686969,5.5884267728950476,5.5974392448213983,5.606451716747749,5.6154641886740997,5.6244766606004504,5.6334891325268011,5.6425016044531517,5.6515140763795024,5.6605265483058531,5.6695390202322038,5.6785514921585545,5.6875639640849052,5.6965764360112559,5.7055889079376065,5.7146013798639572,5.723613851790307,5.7326263237166577,5.7416387956430084,5.7506512675693591,5.7596637394957098,5.7686762114220604,5.7776886833484111,5.7867011552747609,5.7957136272011116,5.8047260991274623,5.813738571053813,5.8227510429801637,5.8317635149065143,5.840775986832865,5.8497884587592157,5.8588009306855664],"text":["Petal.Width: 1.4000000<br />Petal.Length: 5.146816<br />Species: virginica","Petal.Width: 1.4139241<br />Petal.Length: 5.155828<br />Species: virginica","Petal.Width: 1.4278481<br />Petal.Length: 5.164841<br />Species: virginica","Petal.Width: 1.4417722<br />Petal.Length: 5.173853<br />Species: virginica","Petal.Width: 1.4556962<br />Petal.Length: 5.182866<br />Species: virginica","Petal.Width: 1.4696203<br />Petal.Length: 5.191878<br />Species: virginica","Petal.Width: 1.4835443<br />Petal.Length: 5.200890<br />Species: virginica","Petal.Width: 1.4974684<br />Petal.Length: 5.209903<br />Species: virginica","Petal.Width: 1.5113924<br />Petal.Length: 5.218915<br />Species: virginica","Petal.Width: 1.5253165<br />Petal.Length: 5.227928<br />Species: virginica","Petal.Width: 1.5392405<br />Petal.Length: 5.236940<br />Species: virginica","Petal.Width: 1.5531646<br />Petal.Length: 5.245953<br />Species: virginica","Petal.Width: 1.5670886<br />Petal.Length: 5.254965<br />Species: virginica","Petal.Width: 1.5810127<br />Petal.Length: 5.263978<br />Species: virginica","Petal.Width: 1.5949367<br />Petal.Length: 5.272990<br />Species: virginica","Petal.Width: 1.6088608<br />Petal.Length: 5.282003<br />Species: virginica","Petal.Width: 1.6227848<br />Petal.Length: 5.291015<br />Species: virginica","Petal.Width: 1.6367089<br />Petal.Length: 5.300028<br />Species: virginica","Petal.Width: 1.6506329<br />Petal.Length: 5.309040<br />Species: virginica","Petal.Width: 1.6645570<br />Petal.Length: 5.318053<br />Species: virginica","Petal.Width: 1.6784810<br />Petal.Length: 5.327065<br />Species: virginica","Petal.Width: 1.6924051<br />Petal.Length: 5.336078<br />Species: virginica","Petal.Width: 1.7063291<br />Petal.Length: 5.345090<br />Species: virginica","Petal.Width: 1.7202532<br />Petal.Length: 5.354103<br />Species: virginica","Petal.Width: 1.7341772<br />Petal.Length: 5.363115<br />Species: virginica","Petal.Width: 1.7481013<br />Petal.Length: 5.372127<br />Species: virginica","Petal.Width: 1.7620253<br />Petal.Length: 5.381140<br />Species: virginica","Petal.Width: 1.7759494<br />Petal.Length: 5.390152<br />Species: virginica","Petal.Width: 1.7898734<br />Petal.Length: 5.399165<br />Species: virginica","Petal.Width: 1.8037975<br />Petal.Length: 5.408177<br />Species: virginica","Petal.Width: 1.8177215<br />Petal.Length: 5.417190<br />Species: virginica","Petal.Width: 1.8316456<br />Petal.Length: 5.426202<br />Species: virginica","Petal.Width: 1.8455696<br />Petal.Length: 5.435215<br />Species: virginica","Petal.Width: 1.8594937<br />Petal.Length: 5.444227<br />Species: virginica","Petal.Width: 1.8734177<br />Petal.Length: 5.453240<br />Species: virginica","Petal.Width: 1.8873418<br />Petal.Length: 5.462252<br />Species: virginica","Petal.Width: 1.9012658<br />Petal.Length: 5.471265<br />Species: virginica","Petal.Width: 1.9151899<br />Petal.Length: 5.480277<br />Species: virginica","Petal.Width: 1.9291139<br />Petal.Length: 5.489290<br />Species: virginica","Petal.Width: 1.9430380<br />Petal.Length: 5.498302<br />Species: virginica","Petal.Width: 1.9569620<br />Petal.Length: 5.507315<br />Species: virginica","Petal.Width: 1.9708861<br />Petal.Length: 5.516327<br />Species: virginica","Petal.Width: 1.9848101<br />Petal.Length: 5.525339<br />Species: virginica","Petal.Width: 1.9987342<br />Petal.Length: 5.534352<br />Species: virginica","Petal.Width: 2.0126582<br />Petal.Length: 5.543364<br />Species: virginica","Petal.Width: 2.0265823<br />Petal.Length: 5.552377<br />Species: virginica","Petal.Width: 2.0405063<br />Petal.Length: 5.561389<br />Species: virginica","Petal.Width: 2.0544304<br />Petal.Length: 5.570402<br />Species: virginica","Petal.Width: 2.0683544<br />Petal.Length: 5.579414<br />Species: virginica","Petal.Width: 2.0822785<br />Petal.Length: 5.588427<br />Species: virginica","Petal.Width: 2.0962025<br />Petal.Length: 5.597439<br />Species: virginica","Petal.Width: 2.1101266<br />Petal.Length: 5.606452<br />Species: virginica","Petal.Width: 2.1240506<br />Petal.Length: 5.615464<br />Species: virginica","Petal.Width: 2.1379747<br />Petal.Length: 5.624477<br />Species: virginica","Petal.Width: 2.1518987<br />Petal.Length: 5.633489<br />Species: virginica","Petal.Width: 2.1658228<br />Petal.Length: 5.642502<br />Species: virginica","Petal.Width: 2.1797468<br />Petal.Length: 5.651514<br />Species: virginica","Petal.Width: 2.1936709<br />Petal.Length: 5.660527<br />Species: virginica","Petal.Width: 2.2075949<br />Petal.Length: 5.669539<br />Species: virginica","Petal.Width: 2.2215190<br />Petal.Length: 5.678551<br />Species: virginica","Petal.Width: 2.2354430<br />Petal.Length: 5.687564<br />Species: virginica","Petal.Width: 2.2493671<br />Petal.Length: 5.696576<br />Species: virginica","Petal.Width: 2.2632911<br />Petal.Length: 5.705589<br />Species: virginica","Petal.Width: 2.2772152<br />Petal.Length: 5.714601<br />Species: virginica","Petal.Width: 2.2911392<br />Petal.Length: 5.723614<br />Species: virginica","Petal.Width: 2.3050633<br />Petal.Length: 5.732626<br />Species: virginica","Petal.Width: 2.3189873<br />Petal.Length: 5.741639<br />Species: virginica","Petal.Width: 2.3329114<br />Petal.Length: 5.750651<br />Species: virginica","Petal.Width: 2.3468354<br />Petal.Length: 5.759664<br />Species: virginica","Petal.Width: 2.3607595<br />Petal.Length: 5.768676<br />Species: virginica","Petal.Width: 2.3746835<br />Petal.Length: 5.777689<br />Species: virginica","Petal.Width: 2.3886076<br />Petal.Length: 5.786701<br />Species: virginica","Petal.Width: 2.4025316<br />Petal.Length: 5.795714<br />Species: virginica","Petal.Width: 2.4164557<br />Petal.Length: 5.804726<br />Species: virginica","Petal.Width: 2.4303797<br />Petal.Length: 5.813739<br />Species: virginica","Petal.Width: 2.4443038<br />Petal.Length: 5.822751<br />Species: virginica","Petal.Width: 2.4582278<br />Petal.Length: 5.831764<br />Species: virginica","Petal.Width: 2.4721519<br />Petal.Length: 5.840776<br />Species: virginica","Petal.Width: 2.4860759<br />Petal.Length: 5.849788<br />Species: virginica","Petal.Width: 2.5000000<br />Petal.Length: 5.858801<br />Species: virginica"],"type":"scatter","mode":"lines","name":"virginica","line":{"width":3.7795275590551185,"color":"rgba(255,192,203,1)","dash":"solid"},"hoveron":"points","legendgroup":"virginica","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":37.260273972602747,"l":31.415525114155255},"plot_bgcolor":"rgba(127,127,127,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.01999999999999999,2.6200000000000001],"tickmode":"array","ticktext":["0.0","0.5","1.0","1.5","2.0","2.5"],"tickvals":[0,0.5,1,1.4999999999999998,2,2.5],"categoryorder":"array","categoryarray":["0.0","0.5","1.0","1.5","2.0","2.5"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(107,107,107,1)","gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Width","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.70499999999999996,7.1950000000000003],"tickmode":"array","ticktext":["2","4","6"],"tickvals":[2,4,6],"categoryorder":"array","categoryarray":["2","4","6"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(107,107,107,1)","gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Length","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Species","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"68cc3b395019":{"x":{},"y":{},"colour":{},"type":"scatter"},"68cc2190697":{"x":{},"y":{},"colour":{}}},"cur_data":"68cc3b395019","visdat":{"68cc3b395019":["function (y) ","x"],"68cc2190697":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-one-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Petal length and width of the 3 species
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="versicolor-vs-setosa" class="slide level2">
+<h2>Versicolor vs setosa</h2>
+<p>Let’s take a closer look at versicolor and setosa irises, how much of a difference can we see in petal length?</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<center>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="iris_versicolor.jpg" width="300"></p>
+<figcaption>An iris versicolor</figcaption>
+</figure>
+</div>
+</center>
+</div><div class="column" style="width:50%;">
+<center>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="iris_setosa.jpg" width="300"></p>
+<figcaption>An iris setosa</figcaption>
+</figure>
+</div>
+</center>
+</div></div>
+</section>
+<section id="weighted-cohens-d" class="slide level2">
+<h2>Weighted Cohen’s D</h2>
+<p>To be sure, and without relying on our eyesight, we can calculate the Cohen’s D. This is a metric that expresses the size of the difference between two group means. The formula for Cohen’s D is:</p>
+<p><span class="math display">\[\begin{align}
+
+D &amp;= \frac{\bar{X_1} \: - \bar{X_2}}{SD_{pooled}} \\
+  &amp;= \frac{\bar{X_1} \: - \bar{X_2}}{\sqrt{(SD_1^2 \: +
+    SD_2^2)/2}}
+    
+\end{align}\]</span></p>
+</section>
+<section id="calculating-cohens-d" class="slide level2">
+<h2>Calculating Cohen’s D</h2>
+<p>Cohen’s D for petal length in versicolor and setosa irises is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.898544</code></pre>
+</div>
+</div>
+<p>which is very large. This was to be expected, based on what we saw in <a href="#/tbl-one" class="quarto-xref">Table&nbsp;1</a>: large differences in means and smalls SD’s.</p>
+</section>
+<section id="calculating-cohens-d-in-r" class="slide level2">
+<h2>Calculating Cohen’s D in R</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># we split the groups first, so we have a dataframe for both species</span></span>
+<span id="cb2-2"><a href=""></a>versicolor <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href=""></a>  <span class="fu">filter</span>(Species <span class="sc">==</span> <span class="st">"versicolor"</span>)</span>
+<span id="cb2-4"><a href=""></a>setosa <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href=""></a>  <span class="fu">filter</span>(Species <span class="sc">==</span> <span class="st">"setosa"</span>)</span>
+<span id="cb2-6"><a href=""></a></span>
+<span id="cb2-7"><a href=""></a><span class="co"># take means and sd's for both species</span></span>
+<span id="cb2-8"><a href=""></a>v_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(versicolor<span class="sc">$</span>Petal.Length)</span>
+<span id="cb2-9"><a href=""></a>s_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(setosa<span class="sc">$</span>Petal.Length)</span>
+<span id="cb2-10"><a href=""></a>v_sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(versicolor<span class="sc">$</span>Petal.Length)</span>
+<span id="cb2-11"><a href=""></a>s_sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(setosa<span class="sc">$</span>Petal.Length)</span>
+<span id="cb2-12"><a href=""></a></span>
+<span id="cb2-13"><a href=""></a><span class="co"># and we calculate Cohens D</span></span>
+<span id="cb2-14"><a href=""></a>mean_diff <span class="ot">&lt;-</span> v_mean <span class="sc">-</span> s_mean</span>
+<span id="cb2-15"><a href=""></a>pooled_sd <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((v_sd<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> s_sd<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb2-16"><a href=""></a>cohensd <span class="ot">&lt;-</span> mean_diff<span class="sc">/</span>pooled_sd</span>
+<span id="cb2-17"><a href=""></a>cohensd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="citationreference-list" class="slide level2 smaller scrollable">
+<h2>Citation/reference list</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-fisherUSEMULTIPLEMEASUREMENTS1936" class="csl-entry" role="listitem">
+Fisher, R. A. 1936. <span>“<span>THE USE OF MULTIPLE MEASUREMENTS IN TAXONOMIC PROBLEMS</span>.”</span> <em>Annals of Eugenics</em> 7 (2): 179–88. <a href="https://doi.org/10.1111/j.1469-1809.1936.tb02137.x">https://doi.org/10.1111/j.1469-1809.1936.tb02137.x</a>.
+</div>
+</div>
+<p>Make sure we have a reproducible environment (renv)</p>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="uulogo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Exercise2.4_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Exercise2.4_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Exercise2.4_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Exercise2.4_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Exercise2.4_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Exercise2.4_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Exercise2.4_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Exercise2.4_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Exercise2.4_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Exercise2.4_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
